@@ -1,0 +1,32 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/Ranorex-Icon.png</param>
+        <param name="plugin-logo">images/Ranorex-Icon.png</param>
+    </plugin-info>
+	
+	<taskType key="RxExecuteTest" name="Execute Ranorex Test" class="at.Ranorex.hermz.RxBambooPlugin.impl.ExecuteRanorexTask">
+  		<description>A task that executes a Ranorex Test Solution</description>
+  		<resource type="download" name="icon" location="icon.png"/>
+  		<configuration class="at.Ranorex.hermz.RxBambooPlugin.impl.RxTaskConfigurator"/>
+  		<resource type="freemarker" name="edit" location="editRanorexTask.ftl"/>
+	</taskType>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="RxBambooPlugin"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="RxBambooPlugin-resources" name="RxBambooPlugin Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="RxBambooPlugin.css" location="/css/RxBambooPlugin.css"/>
+        <resource type="download" name="RxBambooPlugin.js" location="/js/RxBambooPlugin.js"/>
+        <resource type="download" name="images/" location="/images"/>
+        <resource type="download" name="icon.png" location="icon.png"/>
+
+        <context>RxBambooPlugin</context>
+    </web-resource>
+    
+</atlassian-plugin>
